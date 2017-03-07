@@ -1,0 +1,16 @@
+#header {
+   margin-left: 50px; 
+    background: yellow;
+}
+
+
+
+#navigation {
+    
+    float: left;
+    background: green;
+}
+
+#main {
+    float: right;
+}
