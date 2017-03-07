@@ -40,6 +40,8 @@ $resultz = mysqli_query($connection, $queries);
         
     ?>
         
+        <a href="delete_subject.php?row=<?php echo $_GET['row']; ?>" onclick="return confirm('m jjk jjjn njasdjds');">Delete subject</a>
+        
         <br><br><br>
           <?php 
         
