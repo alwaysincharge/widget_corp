@@ -7,7 +7,7 @@
 <?php
     // Define the default values of all form variables.
     
-    $menu_name = $visible = "";
+    $menu_name = $visible = $content = $subject_id = "";
     
   // This function formats the input data. 
     function test_input($data) {
@@ -55,17 +55,19 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
-        if (empty($_POST["menu_name"])  ||  empty($_POST["visible"])  )   {
+        if (empty($_POST["menu_name"])  ||  empty($_POST["visible"]) || empty($_POST["content"])  || empty($_POST["subject_id"])  )   {
             $_SESSION['menuerror'] = "Menu Name cannot be empty!";
             $_SESSION['viserror'] = "visible cannot be empty!";
         } else {
             $_SESSION['menuerror'] = "";
             $_SESSION['viserror'] = "";
-            $menu_name = test_input($_POST["menu_name"]);
+ $menu_name = test_input($_POST["menu_name"]);
+            $content = test_input($_POST["content"]);
+            $subject_id = test_input($_POST["subject_id"]);
               $visible = test_input($_POST["visible"]);
             
             
-    $query = "UPDATE subjects SET menu_name = '{$menu_name}', visible = {$visible} WHERE id = {$_GET['row']}";
+    $query = "UPDATE pages SET menu_name = '{$menu_name}', content = '{$content}', subject_id = {$subject_id}, visible = {$visible} WHERE id = {$_GET['rows']}";
     
     $updatedsubject = mysqli_query($connection, $query);
     
@@ -126,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div id="page">
     
     
-    <form action="edit_subject.php?row=<?php echo $_GET['row'];?>"  method="post" style="margin-right: 30px; font-size: 17px; font-family: georgia;">
+    <form action="edit_page.php?rows=<?php echo $_GET['rows'];?>"  method="post" style="margin-right: 30px; font-size: 17px; font-family: georgia;">
     
         <p>Menu name</p>         <?php  
         
@@ -141,13 +143,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
     <input type="text" name="menu_name" value="<?php 
         
-        $querieh = "SELECT * FROM subjects WHERE id = {$_GET['row']} ";
+        $querieh = "SELECT * FROM pages WHERE id = {$_GET['rows']} ";
 
 $resulth = mysqli_query($connection, $querieh);
         
         
-    while ($row = mysqli_fetch_assoc($resulth)) {
-      echo $row['menu_name'];
+    while ($rows = mysqli_fetch_assoc($resulth)) {
+      echo $rows['menu_name'];
     }  
         
     ?>"  /><br><br>
@@ -156,10 +158,61 @@ $resulth = mysqli_query($connection, $querieh);
         
         
         
+         <p>Content</p>         <?php  
+        
+        
+        if (isset($_SESSION['menuerror']))
+  if ($_SESSION['menuerror'] != NULL){
+      echo $_SESSION['menuerror'];                   
+  }   
+        
+        ?>
+        
+        
+    <textarea type="text" name="content" value="" style="width: 250px; height: 170px;"><?php $querieh = "SELECT * FROM pages WHERE id = {$_GET['rows']} LIMIT 1";
+
+$resulth = mysqli_query($connection, $querieh);
+        
+        
+    while ($rows = mysqli_fetch_assoc($resulth)) {
+      echo $rows['content'];
+    }  
+        
+           ?></textarea><br><br>
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
 
+       <p>Subject ID</p>         <?php  
         
+        
+        if (isset($_SESSION['menuerror']))
+  if ($_SESSION['menuerror'] != NULL){
+      echo $_SESSION['menuerror'];                   
+  }   
+        
+        ?>
+        
+        
+    <input type="number" name="subject_id" value="<?php $querieh = "SELECT * FROM pages WHERE id = {$_GET['rows']} ";
+
+$resulth = mysqli_query($connection, $querieh);
+        
+        
+    while ($rows = mysqli_fetch_assoc($resulth)) {
+      echo $rows['subject_id'];
+    }  
+        
+    ?>"  /><br><br>
+         
         
         
         
@@ -182,13 +235,13 @@ $resulth = mysqli_query($connection, $querieh);
         
         <p>Visible. The current visibility is set at: <?php 
         
-        $querieh = "SELECT * FROM subjects WHERE id = {$_GET['row']} ";
+        $querieh = "SELECT * FROM pages WHERE id = {$_GET['rows']} ";
 
 $resulth = mysqli_query($connection, $querieh);
         
         
-    while ($row = mysqli_fetch_assoc($resulth)) {
-      echo $row['visible'];
+    while ($rows = mysqli_fetch_assoc($resulth)) {
+      echo $rows['visible'];
     }  
         
     ?>  </p>         <?php  
@@ -204,13 +257,13 @@ $resulth = mysqli_query($connection, $querieh);
         ?>
       <label> 0 <input type="radio" name="visible" value="0"         <?php 
         
-        $querieh = "SELECT * FROM subjects WHERE id = {$_GET['row']} ";
+        $querieh = "SELECT * FROM pages WHERE id = {$_GET['rows']} ";
 
 $resulth = mysqli_query($connection, $querieh);
         
         
-    while ($row = mysqli_fetch_assoc($resulth)) {
-       if ($row['visible'] == 0) {
+    while ($rows = mysqli_fetch_assoc($resulth)) {
+       if ($rows['visible'] == 0) {
            echo "checked";
        }
     }  
@@ -218,13 +271,13 @@ $resulth = mysqli_query($connection, $querieh);
     ?>></label>
       <label> 1 <input type="radio" name="visible" value="1"         <?php 
         
-        $querieh = "SELECT * FROM subjects WHERE id = {$_GET['row']} ";
+        $querieh = "SELECT * FROM pages WHERE id = {$_GET['rows']} ";
 
 $resulth = mysqli_query($connection, $querieh);
         
         
-    while ($row = mysqli_fetch_assoc($resulth)) {
-       if ($row['visible'] == 1) {
+    while ($rows = mysqli_fetch_assoc($resulth)) {
+       if ($rows['visible'] == 1) {
            echo "checked";
        }
     }  
@@ -232,13 +285,13 @@ $resulth = mysqli_query($connection, $querieh);
     ?>></label>
         <label> 2 <input type="radio" name="visible" value="2"         <?php 
         
-        $querieh = "SELECT * FROM subjects WHERE id = {$_GET['row']} ";
+        $querieh = "SELECT * FROM pages WHERE id = {$_GET['rows']} ";
 
 $resulth = mysqli_query($connection, $querieh);
         
         
-    while ($row = mysqli_fetch_assoc($resulth)) {
-       if ($row['visible'] == 2) {
+    while ($rows = mysqli_fetch_assoc($resulth)) {
+       if ($rows['visible'] == 2) {
            echo "checked";
        }
     }  
@@ -246,7 +299,7 @@ $resulth = mysqli_query($connection, $querieh);
     ?>></label><br><br>
         
         <p>Submit</p>
-        <input type="submit" name="submit" value="Edit Subject" />
+        <input type="submit" name="submit" value="Edit Page" />
     
     </form>
     
@@ -257,7 +310,7 @@ $resulth = mysqli_query($connection, $querieh);
     
     
     <div id="main" style="margin-right: 30px; font-size: 17px; font-family: georgia;">  
-    <h2>Edit Subject</h2>
+    <h2>Edit Page</h2>
     <p>Edit subject details.</p>
     
     <ul>

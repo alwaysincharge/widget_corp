@@ -27,21 +27,21 @@ $resultz = mysqli_query($connection, $queries);
 
     </div>
     
-    <div id="main">  
-    <h2>Admin Menu</h2>
-    <div>This is a single page.
-        
-        <?php $jews = ''; $jews = $_GET['row'];  echo $jews;  ?>
-        
-        <?php 
+    <div id="main" style="margin-right: 30px; font-size: 17px; font-family: georgia;">  
+    <h2>    <?php 
     while ($row = mysqli_fetch_assoc($resultz)) {
         echo $row['menu_name'];
     }  
         
-    ?>
+    ?> Subject</h2>
+    <div>This is a single page.
         
-        <a href="delete_subject.php?row=<?php echo $_GET['row']; ?>" onclick="return confirm('m jjk jjjn njasdjds');">Delete subject</a>
+     <!--   <?php $jews = ''; $jews = $_GET['row'];  echo $jews;  ?> -->
         
+    <br><br>
+        
+        <a href="delete_subject.php?row=<?php echo $_GET['row']; ?>" onclick="return confirm('m jjk jjjn njasdjds');">+ Delete subject</a>
+        <a href="edit_subject.php?row=<?php echo $_GET['row'];  ?>"> + Edit Subject</a>
         <br><br><br>
           <?php 
         
@@ -64,7 +64,7 @@ $resultx = mysqli_query($connection, $queriex);
         </div>
     
     <ul>
-        <a href="edit_subject.php?row=<?php echo $_GET['row'];  ?>">Edit Subject</a>
+        
     
     <li><a href="manage_content.php">Manage Website</a></li>
     

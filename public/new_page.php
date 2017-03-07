@@ -10,7 +10,7 @@
 <div id="page">
     
     
-    <form action="submit_subject.php"  method="post" style="margin-right: 30px; font-size: 17px; font-family: georgia;">
+    <form action="submit_page.php"  method="post" style="margin-right: 30px; font-size: 17px; font-family: georgia;">
     
         <p>Menu name</p>         <?php  
         
@@ -23,6 +23,57 @@
         ?>
     <input type="text" name="menu_name" value=""  /><br><br>
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <p>Content</p>         <?php  
+        
+        
+        if (isset($_SESSION['menuerror']))
+  if ($_SESSION['menuerror'] != NULL){
+      echo $_SESSION['menuerror'];                   
+  }   
+        
+        ?>
+        <textarea type="text" name="content" value="" style="height: 110px; width: 250px;"></textarea><br><br>
+    
+        
+        
+        
+        
+        
+        
+        <p>Subject Id</p>         <?php  
+        
+        
+        if (isset($_SESSION['menuerror']))
+  if ($_SESSION['menuerror'] != NULL){
+      echo $_SESSION['menuerror'];                   
+  }   
+        
+        ?>
+    <input type="number" name="subject_id" value=""  /><br><br>
+    
+        
+        
+        
+        
+        
+        
+        
+        
      <!--   
         <p>Position</p>
     <select name="position">

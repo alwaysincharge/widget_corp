@@ -5,12 +5,11 @@
 
 
 
-#navigation {
-    
-    float: left;
-    background: green;
+.navigation {
+
 }
 
 #main {
     float: right;
+    
 }

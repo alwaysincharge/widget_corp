@@ -10,9 +10,16 @@
 <div id="page">
     
     
-    <div id="navigation">
+    <div class="navigation" style="    float: left;
+    font-family: georgia ! important;
+    font-size: 17px;
+    padding; 15px 9px 9px 15px;
+    border: 2px solid #ddd;
+    padding-left: 20px;
+                                   padding-right: 20px;
+    border-radius: 5px;">
     
-    <p>Navigation goes here.</p>
+    <p>Subjects and pages.</p>
         <ul>
          <?php 
     while ($row = mysqli_fetch_assoc($result)) {
@@ -56,11 +63,12 @@ $results = mysqli_query($connection, $querys);  ?>
     ?>
     </div>
     
-    <div id="main"> 
+    <div id="main" style="margin-right: 30px; font-size: 17px; font-family: georgia;"> 
         
-        <a href="new_subject.php">+ Add new subject</a>
-    <h2>Admin Menu</h2>
-    <p>Welcome to the admin area.</p>
+        <a href="new_subject.php">+ Add new subject</a><br>
+        <a href="new_page.php">+ Add new Page</a><br>
+    <h2 style="font-family: georgia;">Manage Content</h2>
+    <p></p>
     
     <ul>
    
