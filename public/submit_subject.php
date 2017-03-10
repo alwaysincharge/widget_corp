@@ -75,7 +75,8 @@
     
     if ($submittedsubject) {
         $_SESSION['message'] = "Subject created!!";
-          redirect_to("manage_content.php");
+          $last_id = $connection->insert_id;
+          redirect_to("subject_page.php?row=" . $last_id);
     }   
     
         }

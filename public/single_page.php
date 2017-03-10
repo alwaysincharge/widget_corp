@@ -41,7 +41,7 @@ $resultt = mysqli_query($connection, $queriet);
             $resulting = mysqli_query($connection, $query);
             
                 while ($rows = mysqli_fetch_assoc($resulting)) {
-        echo $rows['content']; }
+        echo nl2br(htmlentities($rows['content'])); }
             
             ?>  </p>
         

@@ -96,7 +96,9 @@ $results = mysqli_query($connection, $querys);  ?>
         
     <li><a href="manage_content.php">Manage Website</a></li>
     
-    <li><a href="">Manage Admin</a></li>
+    <li><a href="manage_admins.php">Manage Admin</a></li>
+        
+        
     
     <li><a href="">Logout</a></li>
     </ul></div>

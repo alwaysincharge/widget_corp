@@ -14,6 +14,6 @@
 
 <div id="header">
    
-    <h1>Widget Corp</h1>
+   <a href="../public/"> <h1>Widget Corp</h1></a>
     
 </div>
