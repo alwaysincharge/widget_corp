@@ -35,7 +35,7 @@ $username = $hashed_password = "";
         } else {
 
             $username = test_input($_POST["username"]);
-            $hashed_password = password_encrypt(test_input($_POST["hashed_password"]));
+            $hashed_password = password_hash(test_input($_POST["hashed_password"]), PASSWORD_DEFAULT);
 
             
             
