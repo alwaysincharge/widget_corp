@@ -46,8 +46,7 @@ $username = $hashed_password = "";
             
                 
                     while ($row = mysqli_fetch_assoc($loginquery)) {
-                        echo $row['username'];
-                        echo $row['hashed_password'];
+                        
                         
                         
                         if (password_verify(test_input($_POST["hashed_password"]), $row['hashed_password'])) {
@@ -55,7 +54,7 @@ $username = $hashed_password = "";
                             $_SESSION['username'] = $row['username'];
     redirect_to("manage_admins.php"); 
 } else {
-    echo 'Invalid password.';
+  
 }
                         
                         
