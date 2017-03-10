@@ -7,6 +7,17 @@
 <?php  include("../includes/header.php"); ?>
 
 
+<?php
+
+if (!isset($_SESSION['admin_id'])) {
+     redirect_to("login.php"); 
+}
+
+
+
+?>
+
+
 <div id="page">
     
     
@@ -30,7 +41,15 @@
     
     <div id="main" style="margin-right: 30px; font-size: 17px; font-family: georgia;"> 
         
-        <a href="create_admin.php">+ New Admin</a><br>
+        <a href="create_admin.php">+ New Admin</a><br> <?php  
+        
+        
+        if (isset($_SESSION['username']))
+  if ($_SESSION['username'] != NULL){
+      echo $_SESSION['username'];                   
+  }   
+        
+        ?>
 
     <h2 style="font-family: georgia;">Manage Content</h2>
     <p></p>
@@ -50,7 +69,7 @@
     
     <li><a href="">n</a></li>
     
-    <li><a href="">Logout</a></li>
+    <li><a href="logout.php">Logout</a></li>
     </ul></div>
   
     

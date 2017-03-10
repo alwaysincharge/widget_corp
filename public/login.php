@@ -51,6 +51,8 @@ $username = $hashed_password = "";
                         
                         
                         if (password_verify(test_input($_POST["hashed_password"]), $row['hashed_password'])) {
+                            $_SESSION['admin_id'] = $row['id'];
+                            $_SESSION['username'] = $row['username'];
     redirect_to("manage_admins.php"); 
 } else {
     echo 'Invalid password.';
