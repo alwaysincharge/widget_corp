@@ -48,9 +48,14 @@ if (isset($_POST['btn_upload']) )  {
 } else  {
         
     
+    if(($filetype != "image/jpg" && $filetype != "image/png" && $filetype != "image/jpeg"
+&& $filetype != "image/gif") || ( $filetypes != "image/jpg" && $filetypes != "image/png" && $filetypes != "image/jpeg"
+&& $filetypes != "image/gif" ) ) {
     
-    
-    
+    echo "jjjkkjnjk"; }  else {
+        
+        
+        
     move_uploaded_file($filetmp, $filepath);
     move_uploaded_file($filetmps, $filepaths);
     
@@ -78,7 +83,7 @@ if (isset($_POST['btn_upload']) )  {
     
     
 }
-
+}
 
 
 
@@ -116,8 +121,8 @@ if (isset($_POST['btn_upload']) )  {
         
         ?>
     
-   <input type="file" name="file_img" accept="image/*"  required/> 
-       <input type="file" name="file_imgs" accept="image/*"  required/> 
+   <input type="file" name="file_img"  required/> 
+       <input type="file" name="file_imgs"  required/> 
    <input type="submit" name="btn_upload" value="Upload"  />  
     
     
