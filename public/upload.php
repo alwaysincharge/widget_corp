@@ -25,7 +25,7 @@ if (isset($_POST['btn_upload']) )  {
     $filetype = $_FILES['file_img']['type'];
     
     
-    $filepath = "photo/" .$filename; 
+    $filepath = "photo/" .(time() + 679) .$filename; 
     
         $filetmps = $_FILES['file_imgs']['tmp_name'];
     
@@ -33,9 +33,22 @@ if (isset($_POST['btn_upload']) )  {
     $filenames = $_FILES['file_imgs']['name'];
     
     $filetypes = $_FILES['file_imgs']['type'];
+        
+                $filepaths = "photo/" .time() .$filenames; 
+      
+    
+ 
     
     
-    $filepaths = "photo/" .$filenames; 
+    
+    
+    if (!($_FILES["file_img"]["size"] < 3000000) || !($_FILES["file_imgs"]["size"] < 3000000)) {
+    echo "Sorry, your file is too large.";
+    
+} else  {
+        
+    
+    
     
     
     move_uploaded_file($filetmp, $filepath);
@@ -52,6 +65,12 @@ if (isset($_POST['btn_upload']) )  {
     
     redirect_to("manage_content.php");
      
+    }
+    
+    
+    
+    
+    
     
     
     
@@ -88,15 +107,17 @@ if (isset($_POST['btn_upload']) )  {
             <?php  
         
         
-        if (isset($_SESSION['messages']))
-  if ($_SESSION['messages'] != NULL){
-      echo $_SESSION['messages'];                   
-  }   
+        if (isset($_SESSION['messages'])) {
+          echo  $_SESSION['messages'];
+            
+            $_SESSION['messages'] = null;
+        }
+   
         
         ?>
     
-   <input type="file" name="file_img"  /> 
-       <input type="file" name="file_imgs"  /> 
+   <input type="file" name="file_img" accept="image/*"  required/> 
+       <input type="file" name="file_imgs" accept="image/*"  required/> 
    <input type="submit" name="btn_upload" value="Upload"  />  
     
     
