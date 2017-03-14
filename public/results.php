@@ -16,9 +16,18 @@
 $keywords = "";
 
 
+  // This function formats the input data. 
+    function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+   }
+
+
 if (isset($_GET['keywords'])) {
     
-    $keywords = $_GET['keywords'];
+    $keywords = mysqli_real_escape_string($connection, test_input($_GET['keywords']));
     
     $query = "SELECT * FROM pages WHERE menu_name LIKE '%{$keywords}%' ";
     

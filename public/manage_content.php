@@ -6,6 +6,8 @@
 
 <?php  include("../includes/header.php"); ?>
 
+<?php $results_per_page = 2;  ?>
+
 
 <div id="page">
     

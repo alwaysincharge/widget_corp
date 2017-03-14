@@ -8,7 +8,15 @@
 
 
 
+<?php
 
+if (!isset($_SESSION['admin_id'])) {
+     redirect_to("login.php"); 
+}
+
+
+
+?>
 
 
 
