@@ -102,7 +102,7 @@ $results = mysqli_query($connection, $querys);  ?>
         
         
     
-    <li><a href="">Logout</a></li>
+    <li><a href="logout.php">Logout</a></li>
     </ul></div>
   
     

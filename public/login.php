@@ -43,6 +43,8 @@ $username = $hashed_password = "";
             
             if ( mysqli_num_rows($loginquery) == 1) {
                 
+                
+                
             
                 
                     while ($row = mysqli_fetch_assoc($loginquery)) {
@@ -50,9 +52,15 @@ $username = $hashed_password = "";
                         
                         
                         if (password_verify(test_input($_POST["hashed_password"]), $row['hashed_password'])) {
-                            $_SESSION['admin_id'] = $row['id'];
-                            $_SESSION['username'] = $row['username'];
-    redirect_to("manage_admins.php"); 
+                           echo "jnjjkl";
+                            
+                            
+                            
+                            if (!isset($_SESSION['realredirect'])) {  } else {  redirect_to("{$_SESSION['realredirect']}"); }
+                            
+                            
+                            
+    redirect_to("{$_SESSION['realredirect']}"); 
 } else {
   
 }

@@ -11,7 +11,10 @@
 <?php
 
 if (!isset($_SESSION['admin_id'])) {
-     redirect_to("login.php"); 
+    $_SESSION['realredirect'] = $_SERVER['REQUEST_URI'];
+    
+
+ redirect_to("login.php"); 
 }
 
 
@@ -26,7 +29,7 @@ if (!isset($_SESSION['admin_id'])) {
 <form method="get" action="results.php">
 
 
-
+<?php echo $_SERVER['REQUEST_URI'];  ?>
 
 <input type="text" name="keywords" value="" />
 

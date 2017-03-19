@@ -7,7 +7,18 @@
 
 
 
+<?php
 
+if (!isset($_SESSION['admin_id'])) {
+    $_SESSION['realredirect'] = $_SERVER['REQUEST_URI'];
+    
+
+ redirect_to("login.php"); 
+}
+
+
+
+?>
 
 
 

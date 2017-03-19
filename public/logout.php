@@ -15,6 +15,7 @@
 
 $_SESSION['admin_id'] = null;
 $_SESSION['username'] = null;
+$_SESSION['realredirect'] = null;
 
 
  redirect_to("login.php"); 
